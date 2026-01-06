@@ -69,7 +69,7 @@ def start_upload(request: UploadRequest):
 
 
     #asignamos por defecto carpeta donde se guardara
-    request.folder_name="spo2temperatura" if request.folder_name is None or request.folder_name=="string" else request.folder_name
+    request.folder_name="spo2temperatura_Particionamiento" if request.folder_name is None or request.folder_name=="string" else request.folder_name
 
     request.subfolder_name= None if request.subfolder_name == "string" else request.subfolder_name
     
@@ -102,7 +102,8 @@ def start_upload(request: UploadRequest):
 
         # Construir la ruta completa: carpeta/subcarpeta/archivo.csv 
         if not request.subfolder_name: #si no hay subcarpeta lo guarda en la ruta principal
-            file_name = f"{request.folder_name}/datos_{datetime.utcnow().strftime('%Y%m%d%H%M%S')}_{i}.csv"
+            #file_name = f"{request.folder_name}/datos_{datetime.utcnow().strftime('%Y%m%d%H%M%S')}_{i}.csv"
+            file_name = f"{request.folder_name}/id_paciente_{id_paciente}/"f"datos_{datetime.utcnow().strftime('%Y%m%d%H%M%S')}_{i}.csv"
         else:
             file_name = f"{request.folder_name}/{request.subfolder_name}/datos_{datetime.utcnow().strftime('%Y%m%d%H%M%S')}_{i}.csv"
 
